@@ -1,0 +1,18 @@
+service: serverless-rest-api
+frameworkVersion: '3.x'
+provider:
+  name: aws
+  runtime: go1.x
+  region: us-east-1
+  stage: ${opt:stage}
+functions:
+  api:
+    handler: bin/main
+    events: 
+      - http:
+        path: /ping
+        method: GET
+package:
+  - '!*/**'
+  - bin/main
+    
